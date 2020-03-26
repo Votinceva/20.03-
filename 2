@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <limits.h>
+#define M 3 /*строк*/
+#define N 4 /*столбцов*/
+
+int main()
+{
+  int a[M][N];
+  int i, j, aaa;
+  int mini = INT_MAX, maxy = INT_MIN, ii, jj, iix, jjx;
+
+  for(i = 0; i < M; i++)
+    for(j = 0; j < N; j++)
+      a[i][j] = rand()%100;
+
+ for(i = 0; i < M; i++){
+      for(j = 0; j < N; j++)
+        printf("%5d", a[i][j]);
+      printf("\n");
+
+  }
+
+   for(i = 0; i < M; i++){
+    for(j = 0; j < N; j++){
+        if (a[i][j] <= mini){
+            mini = a[i][j];
+            ii = i;
+            jj = j;
+        }
+         if (a[i][j] >= maxy){
+            maxy = a[i][j];
+            iix = i;
+            jjx = j;
+        }
+    }
+    aaa = a[ii][jj];
+    a[ii][jj] = a[iix][jjx];
+    a[iix][jjx] = aaa;
+    mini = INT_MAX;
+    maxy = INT_MIN;
+  }
+
+printf("\n");
+  for(i = 0; i < M; i++){
+      for(j = 0; j < N; j++)
+        printf("%5d", a[i][j]);
+      printf("\n");
+
+  }
+  return 0;
+}
