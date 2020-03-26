@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <limits.h>
+#define M 3 /*строк*/
+#define N 4 /*столбцов*/
+
+int main()
+{
+  int a[M][N];
+  int i, j, l = 0;
+  int mini = INT_MAX, ii, jj;
+
+    for(i = 0; i < M; i++)
+    for(j = 0; j < N; j++)
+      a[i][j] = rand()%100;
+
+  for(j = 0; j < N; j++){
+    for(i = 0; i < M; i++)
+        if (a[i][j] >= 0){
+            if (a[i][j] <= mini){
+                mini = a[i][j];
+                ii = i;
+                jj = j;
+                l++;
+            }
+        }
+    if (l !=0){
+        printf("a[%d][%d] = %d\n", ii, jj, mini);
+        mini = INT_MAX;
+    }
+    else printf("ops\n");
+  }
+
+
+  for(i = 0; i < M; i++){
+      for(j = 0; j < N; j++)
+        printf("%3d", a[i][j]);
+      printf("\n");
+
+  }
+  return 0;
+}
