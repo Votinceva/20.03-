@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <limits.h>
+#define M 3 /*строк*/
+#define N 4 /*столбцов*/
+
+int main()
+{
+  int a[M][N] = {{2, 3, 3, 7}, {2, 3, 3, 7}, {21, 21, 23, 21}};
+  int i, j, k, l = 0;
+
+  for(i = 0; i < M; i++){
+      for(j = 0; j < N; j++)
+        printf("%3d", a[i][j]);
+      printf("\n");
+
+  }
+
+ for(j = 0; j < N; j++){
+    for(i = 0; i < M; i++){
+        for(k = 1; k < M; k++)
+            if ((i+k) < M){
+            if (a[i][j] == a[i+k][j]){
+                l++;
+            }
+    }
+   }
+  }
+    if (l != 0){
+        printf("yup\n");
+    }
+    else printf("ops, no\n");
+
+  return 0;
